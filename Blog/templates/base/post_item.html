@@ -6,13 +6,13 @@
 	
 	<div class="blog-title" style=""> 
 		<span class="label label-primary">原创</span>
-		<a href='/blog/{{ post.id }}'>
+		<a href='/posts/{{ post.id }}'>
 		{{ post.title }} 
 		</a>
 	</div>
 	<br>
 	<p style="color:#777;font-size: 12px"> 作者：&nbsp;{{ post.author.username }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ post.create_time|timesince}} &nbsp;ago  &nbsp;&nbsp;&nbsp;&nbsp;分类：{{ post.category }}</p>
-	<a href="/blog/{{ post.id }}" style="color: black">
+	<a href="/posts/{{ post.id }}" style="color: black">
 		<div class="post-body" style="">
 			
 			<img src="http://panfei-1257264121.cos.ap-chengdu.myqcloud.com/python2.png" class="pull-left" style="max-width: 160px;max-height: 96px;padding-right: 10px;transition: transform .3s linear;">
