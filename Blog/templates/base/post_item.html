@@ -1,0 +1,32 @@
+
+<!-- 博客列表显示 -->
+<link rel="stylesheet" type="text/css" href="/static/css/posts.css">
+
+<div class="blog-container">
+	
+	<div class="blog-title" style=""> 
+		<span class="label label-primary">原创</span>
+		<a href='/blog/{{ post.id }}'>
+		{{ post.title }} 
+		</a>
+	</div>
+	<br>
+	<p style="color:#777;font-size: 12px"> 作者：&nbsp;{{ post.author.username }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ post.create_time|timesince}} &nbsp;ago  &nbsp;&nbsp;&nbsp;&nbsp;分类：{{ post.category }}</p>
+	<a href="/blog/{{ post.id }}" style="color: black">
+		<div class="post-body" style="">
+			
+			<img src="http://panfei-1257264121.cos.ap-chengdu.myqcloud.com/python2.png" class="pull-left" style="max-width: 160px;max-height: 96px;padding-right: 10px;transition: transform .3s linear;">
+			<span style="    line-height: 24px;
+				font-size: 16px;">
+				{{ post.content|striptags|truncatechars_html:"100" }}
+			</span>
+
+		</div> 
+		<div style="clear: both;"></div>
+		<div style="float: right;">
+			<span class="glyphicon glyphicon-eye-open"></span>&nbsp;
+			浏览（{{ post.click_num }}） &nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="glyphicon glyphicon-comment"></span>&nbsp;回复（{{post.comments.count}}）
+		</div>
+	</a>
+</div>
