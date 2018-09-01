@@ -16,3 +16,7 @@ class Post(models.Model):
 	author = models.ForeignKey(User,on_delete=models.CASCADE)
 	#记录博客的点击量
 	click_num = models.IntegerField(default=0)
+
+	#定义文字描述
+	def __str__(self):
+		return self.author + ':' + self.title
