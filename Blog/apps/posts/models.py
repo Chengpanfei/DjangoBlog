@@ -19,4 +19,4 @@ class Post(models.Model):
 
 	#定义文字描述
 	def __str__(self):
-		return self.author + ':' + self.title
+		return self.author.username + ':' + self.title
