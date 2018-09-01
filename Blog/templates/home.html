@@ -1,8 +1,12 @@
-{% for post in posts %}
-<h2> {{ post.title }} </h2>
+{% extends 'base/base.html' %}
 
-<p> {{ post.content }} </p>
+{% block content %}
+	{% for post in posts %}
+	<h2> {{ post.title }} </h2>
 
-<br>
+	<p> {{ post.content }} </p>
 
-{% endfor %}
+	<br>
+
+	{% endfor %}
+{% endblock %}
