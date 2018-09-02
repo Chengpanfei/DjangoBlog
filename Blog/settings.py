@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'Blog.apps.posts',
     'Blog.apps.accounts',
     'Blog.apps.comments',
+    'Blog.apps.categories',
 ]
 
 MIDDLEWARE = [

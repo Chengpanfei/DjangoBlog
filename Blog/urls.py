@@ -24,5 +24,5 @@ urlpatterns = [
     path('users/',include('Blog.apps.accounts.urls')),
     path('posts/',include('Blog.apps.posts.urls')),
     path('comments/',include('Blog.apps.comments.urls')),
-    
+    path('categories/',include('Blog.apps.categories.urls')),
 ]

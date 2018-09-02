@@ -11,7 +11,12 @@
 		</a>
 	</div>
 	<br>
-	<p style="color:#777;font-size: 12px"> 作者：&nbsp;{{ post.author.username }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ post.create_time|timesince}} &nbsp;ago  &nbsp;&nbsp;&nbsp;&nbsp;分类：{{ post.category }}</p>
+	<p style="color:#777;font-size: 12px"> 作者：&nbsp;{{ post.author.username }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ post.create_time|timesince}} &nbsp;ago  &nbsp;&nbsp;&nbsp;&nbsp;分类：{{ post.category }}
+	&nbsp;&nbsp;&nbsp;&nbsp;标签：
+	{% for tag in post.tags.all %}
+	{{ tag.name }}&nbsp;&nbsp;
+	{% endfor %}
+	</p>
 	<a href="/posts/{{ post.id }}" style="color: black">
 		<div class="post-body" style="">
 			
