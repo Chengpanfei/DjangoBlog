@@ -20,7 +20,13 @@
 		{% block css %}
 	    {% endblock %}
 	    <style>
-	    	body{ background-color:rgb(247,248,250);}
+	        html{
+	        	height: 100%;
+	        }
+	    	body{ 
+	    		background-color:rgb(233,233,233);	
+	    		height: 100%;
+	    	}
 	    </style>
 
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -31,9 +37,9 @@
 
 	</head>
 
-	<body>
+	<body >
 
-		<div class="conrainer">
+		<div class="conrainer" style="min-height: 100%;">
 
 
 
@@ -44,7 +50,11 @@
 	    {% block content %}
 	    {% endblock %}
 
+	    
+
 		</div>
+		{% block footer %}
+		{% endblock %}
 
 	</body>
 </html>
