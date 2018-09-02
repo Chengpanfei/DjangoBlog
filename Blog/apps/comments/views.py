@@ -18,7 +18,7 @@ from django.contrib.auth.models import User
 @login_required(login_url='/users/login/')
 def postComment(request):
 	'''
-		处理评论内容的视图
+		处理评论和留言内容的视图
 	'''
 	form = CommentForm(request.POST)
 	if form.is_valid:
@@ -37,12 +37,15 @@ def postComment(request):
 			'''
 			return redirect('/posts/' + post_id)
 
-	return redirect('/commentBoard/') 
+	return redirect('/comments/board/') 
 
 
 @require_POST
 @login_required(login_url='/users/login/')
 def postSubComment(request):
+	'''
+	处理子评论和留言的视图
+	'''
 
 	form = SubCommentForm(request.POST)
 
@@ -52,8 +55,8 @@ def postSubComment(request):
 		post_comment_id = int(request.POST['post-comment-id'])
 		dest_id = int(request.POST['dest-id'])
 
+		#根据接收到的id查找对应的用户和评论对象
 		post_comment = get_object_or_404(PostComment,pk=post_comment_id)
-
 		dest = get_object_or_404(User,pk=dest_id)
 
 		subcomment = SubComment(author=request.user,dest_user=dest,post_comment=post_comment,content=content)
@@ -64,4 +67,17 @@ def postSubComment(request):
 		if post_id != 1:
 			return redirect('/posts/' + str(post_id))
 
-	return redirect('/commentBoard/') 
+	return redirect('/comments/board/') 
+
+
+def commentBoard(request):
+	'''
+	留言板视图
+	'''
+	post = get_object_or_404(Post,pk=1)
+
+	context = {
+		'post':post,
+	}
+
+	return render(request,'commentBoard.html',context)

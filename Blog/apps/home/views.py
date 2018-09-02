@@ -8,7 +8,7 @@ def home(request):
 	博客网站首页视图
 	'''
 
-	posts = Post.objects.all()
+	posts = Post.objects.all()[1:]
 
 	#往模板中传递的上下文
 	context = {
