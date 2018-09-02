@@ -21,6 +21,7 @@ from .apps.home import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home),
+    path('about/',views.about),
     path('users/',include('Blog.apps.accounts.urls')),
     path('posts/',include('Blog.apps.posts.urls')),
     path('comments/',include('Blog.apps.comments.urls')),

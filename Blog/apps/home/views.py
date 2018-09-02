@@ -15,3 +15,9 @@ def home(request):
 		'posts':posts
 	}
 	return render(request,'home.html',context)
+
+def about(request):
+	'''
+	关于页面
+	'''
+	return render(request,'about.html')
