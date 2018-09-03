@@ -1,0 +1,217 @@
+{% extends 'base/base.html' %}
+
+{% block css %}
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/static/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<!-- <link rel="stylesheet" href="/static/css/bootstrap.css"> -->
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="/static/css/about.css">
+
+	<!-- Modernizr JS -->
+	<script src="/static/js/modernizr-2.6.2.min.js"></script>
+	<style >body{
+	background-image: url(/static/images/bg_img.jpg)
+	}
+	body{
+		font-size: 14px;
+	}
+	#fh5co-main{
+		font-size: 20px;
+	}
+	</style>
+
+{% endblock %}
+
+{% block content %}
+	
+	<div id="fh5co-main">
+		<div class="fh5co-tab-wrap">
+			<ul class="fh5co-tab-menu">
+				<li class="active"><a href="#" data-tab="1"><span class="icon icon-glass"></span><span class="menu-text">关于本站</span></a></li>
+				<li><a href="#" data-tab="2"><span class="icon icon-graduation-cap"></span><span class="menu-text">联系作者</span></a></li>
+				<li><a href="#" data-tab="3"><span class="icon icon-black-tie"></span><span class="menu-text">友情连接</span></a></li>
+				<li><a href="#" data-tab="4" data-pie="yes"><span class="icon icon-fighter-jet"></span><span class="menu-text">站点统计</span></a></li>
+			</ul>
+			<div class="fh5co-tab-content active" data-content="1">
+				<div class="fh5co-content-inner text-center">
+					<div class="row row-bottom-padded-sm">
+						<div class="col-md-12">
+							<figure>
+								<img src="/static/images/v.jpg" alt="Free HTML5 Wesbite Template by FreeHTML5.co"
+								style="border-radius: 50%;">
+							</figure>
+							<h1>程盼飞</h1>
+							<p>这是我的一个个人博客网站，请大家多多批评指正！ </p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 fh5co-counter">
+				<!-- 			<div class="fh5co-number fh5co-left">10</div> -->
+							<div class="fh5co-text">
+								<h3 class="border-bottom">简介</h3>
+								<p>截至目前，网站还是非常简陋，只实现了一些简单的功能。有时间会继续改进。
+								后台采用Django Web框架，前台有使用Bootstrap，和一些东拼西凑的模板，手机端也没有进行适配。托管在阿里云服务器上，使用腾讯云对象存储保存博客图片。</p>
+							</div>
+						</div>
+					</div>
+<!-- 					<ul class="fh5co-social">
+						<li><a href="#"><i class="icon-envelope"></i></a></li>
+						<li><a href="#"><i class="icon-twitter"></i></a></li>
+						<li><a href="#"><i class="icon-instagram"></i></a></li>
+						<li><a href="#"><i class="icon-google"></i></a></li>
+						<li><a href="#"><i class="icon-linkedin"></i></a></li>
+					</ul> -->
+				</div>
+			</div>
+			<div class="fh5co-tab-content" data-content="2">
+				<div class="fh5co-content-inner">
+					<div class="row">
+						<div class="col-md-12">
+							<p>Looking forward to your connection!</p>
+
+							<div class="fh5co-feature">
+								<div class="fh5co-icon">
+									<i class="icon-graduation-cap"></i>
+								</div>
+								<div class="fh5co-text">
+									<h2>Email</h2>
+									<p>panfei@hust.edu.cn</p>
+								</div>
+							</div>
+
+							<div class="fh5co-feature">
+								<div class="fh5co-icon">
+									<i class="icon-graduation-cap"></i>
+								</div>
+								<div class="fh5co-text">
+									<h2>QQ</h2>
+									<p>643842536</p>
+								</div>
+							</div>
+
+							<div class="fh5co-feature">
+								<div class="fh5co-icon">
+									<i class="icon-graduation-cap"></i>
+								</div>
+								<div class="fh5co-text">
+									<h2>Github</h2>
+									<p>https://github.com/Chengpanfei/</p>
+								</div>
+							</div>
+
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="fh5co-tab-content" data-content="3">
+				<div class="fh5co-content-inner">
+					<div class="row">
+						<div class="col-md-12">
+
+							<p>友情连接</p>
+
+							<div class="fh5co-feature">
+								<div class="fh5co-icon">
+									<i class="icon-black-tie"></i>
+								</div>
+								<div class="fh5co-text">
+									<h2>百度</h2>
+									<h3>www.baidu.com</h3>
+									<p>这里放图片</p>
+								</div>
+							</div>
+
+							<div class="fh5co-feature">
+								<div class="fh5co-icon">
+									<i class="icon-black-tie"></i>
+								</div>
+								<div class="fh5co-text">
+									<h2>谷歌</h2>
+									<h3>www.google.com</h3>
+									<p>这里放图片</p>
+								</div>
+							</div>
+
+							<div class="fh5co-feature">
+								<div class="fh5co-icon">
+									<i class="icon-black-tie"></i>
+								</div>
+								<div class="fh5co-text">
+									<h2>腾讯</h2>
+									<h3>www.tencent.com</h3>
+									<p>这里放图片</p>
+								</div>
+							</div>
+
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="fh5co-tab-content" data-content="4">
+				<div class="fh5co-content-inner">
+					<div class="row">
+						<div class="col-md-12">
+							<p>统计页面</p>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+							<div class="chart" data-percent="95"><span><strong>访问次数</strong>95%</span></div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+							<div class="chart" data-percent="93"><span><strong>CSS3</strong>93%</span></div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+							<div class="chart" data-percent="90"><span><strong>jQuery</strong>90%</span></div>
+						</div>
+
+						<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+							<div class="chart" data-percent="89"><span><strong>PHP</strong>89%</span></div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+							<div class="chart" data-percent="85"><span><strong>MySQL</strong>85%</span></div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+							<div class="chart" data-percent="90"><span><strong>AngularJS</strong>90%</span></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 		<footer id="fh5co-footer">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center">
+					<small>
+						&copy; 页脚内容. All Rights Reserved. <span class="fh5co-author">
+						Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> 备案等</span>
+					</small>
+				</div>
+			</div>
+		</footer> -->
+	</div>
+	
+
+	{% endblock %}
+
+	{% block js %}
+	<!-- jQuery -->
+	<script src="/static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="/static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<!-- Easy PieChart -->
+	<script src="/static/js/jquery.easypiechart.min.js"></script>
+	<!-- MAIN JS -->
+	<script src="/static/js/main.js"></script>
+	{% endblock %}
+
+
+
+

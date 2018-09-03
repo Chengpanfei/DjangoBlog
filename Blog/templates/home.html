@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+{% for post in posts %}
+
+{% include 'base/post_item.html' %}
+
+{% endfor %}
+
+
+
+{% endblock %}
+
+{% block footer %}
+{% include 'base/footer.html' %}
+{% endblock %}

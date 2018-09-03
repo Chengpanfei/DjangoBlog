@@ -1,0 +1,90 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="/static/css/category.css">
+
+<button class="btn btn-success" onclick="showMenu()">当前分类：{{ category }}</button>
+<button class="btn btn-primary" id="change-menu-btn" state="hidden" onclick="showMenu(this)">切换</button>
+<br>
+<div class="perspective" style="perspective: 1500px;margin-top:10px">
+  <div id="mynav">
+      
+    <div class="category-menu">
+      
+    <div  class="category">
+    <span >
+      <a href="/categories/">全部</a>
+    </span>
+    </div>
+
+    {% for category in categories %}
+   <div  class="category">
+    <span >
+      <a href="/categories/{{category.name}}">{{ category.name }}</a>
+    </span>
+    </div>
+    {% endfor %}
+  
+    </div>
+
+  </div>
+  <div class="row trans" id="panel-trans">
+
+    <div class="col-md-9 col-xs-12">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+    {% for post in posts %}
+
+    	{% include 'base/post_item.html' %}
+
+    {% endfor %}
+    </div>
+  </div>
+  </div>
+
+
+<!--     <div class="col-md-3">
+      <iframe style="background-color:white;" width="200" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=5&site=12"></iframe>
+    </div> -->
+  </div><!-- row -->
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+  function showMenu(btn){
+    var panel = document.getElementById('panel-trans')
+    var mynav = document.getElementById('mynav')
+
+    var state = btn.getAttribute('state')
+    if(state=='hidden'){
+           panel.style.transform="translate3d(100px,0px,0px)" 
+     // panel.style.background-color="red"
+  
+    
+            mynav.style.transform="translate3d(0px,0px,0px)";
+            btn.setAttribute('state','show')
+            btn.innerHTML = '取消'
+           
+    }
+    else if(state=='show')
+    {
+      panel.style.transform="translate3d(0px,0px,0px)" 
+      mynav.style.transform="translate3d(-100%,0px,0px)";
+      btn.innerHTML = '切换'
+      btn.setAttribute('state','hidden')
+    }
+
+
+  
+  }
+
+</script>
+{% endblock %}

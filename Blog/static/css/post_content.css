@@ -1,0 +1,18 @@
+
+  
+.post-container{
+  background-color: white;
+  
+  float:left;
+  width: 100%;
+  padding: 0 50px;
+}
+.post-header{
+  text-align: center;
+}
+.post-body-container{
+
+  border-bottom: solid 1px gray;
+  border-top: solid 1px gray;
+  padding-top: 20px;
+}

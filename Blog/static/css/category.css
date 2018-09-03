@@ -1,0 +1,26 @@
+
+.category{
+  /*float: left;*/
+  /*width: 100%;*/
+  text-align: center;
+    background-color: white;
+    /*height: 20px;*/
+    padding: 10px 0px 10px 0px;
+    font-size:16px;
+}
+.category:hover{
+  background-color: rgb(244,244,244);
+}
+#panel-trans{
+  transition: transform 0.3s linear;
+}
+#mynav{
+  width: 100px;
+  height: 100%;
+  position: absolute;
+  top:0px;
+  left: 0px;
+  background-color:white;
+  transform: translate3d(-100%,0px,0px);
+  transition: transform 0.3s linear;
+}
