@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from .models import Post
 from ..categories.models import Category
+
+import json
 
 from .forms import PostForm
 
@@ -10,6 +12,10 @@ from django.contrib.auth.decorators import (
 		login_required,
 		permission_required
 		)
+
+from django.views.decorators.http import require_POST
+
+from ...libs.uploads import save_img_to_cos
 # Create your views here.
 
 def post_content(request,post_id):
@@ -41,7 +47,9 @@ def post_content(request,post_id):
 @login_required(login_url='/users/login/')
 @permission_required('Blog.add_post',raise_exception=True)
 def post_create(request):
-	
+	'''
+	创建博客视图
+	'''
 	if request.method == 'POST':
 
 		form  = PostForm(request.POST)
@@ -58,6 +66,26 @@ def post_create(request):
 			post = Post(title=title,category=category,content=body,author=request.user)
 
 			post.save()
-			return redirect('/')
+			return redirect('/posts/' + str(post.id))
+
 	categories = Category.objects.all()
 	return render(request,'posts_create.html',{'categories':categories})
+
+
+@require_POST
+@login_required(login_url='/users/login/')
+def uploadImage(request):
+
+	'''
+	接收用户上传的图片，并保存至腾讯云对象存储
+	'''
+	filename = save_img_to_cos(request.FILES.get('img'),
+		request.user.id)
+	
+	result = {
+		"errno": 0,
+		"data": [filename,
+		]
+
+	}
+	return HttpResponse(json.dumps(result), content_type="application/json")
