@@ -88,4 +88,24 @@ def uploadImage(request):
 		]
 
 	}
-	return HttpResponse(json.dumps(result), content_type="application/json")
+	return HttpResponse(json.dumps(result),
+		content_type="application/json")
+
+
+def archives(request, year, month):
+	'''
+	博客归档视图
+	'''
+	print(year)
+
+	posts = Post.objects.filter(
+		create_time__year=year,
+		create_time__month=month,
+		).order_by('-create_time')
+
+	context = {
+		'posts':posts
+	}
+	return render(request, 'archives.html',context)
+
+

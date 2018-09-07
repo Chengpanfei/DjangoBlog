@@ -12,12 +12,18 @@ def home(request):
 	lasted_posts = Post.objects.all().order_by('-create_time')[0:3]
 	#按照拥有的评论数目排序，聚合后的结果作为属性
 	hot_posts = Post.objects.annotate(comment_num=Count('comments')).order_by('-comment_num')[0:3]
+	#按月份分组聚合
 
+	archives = Post.objects.extra(
+		select={"create_time":"strftime('%%Y年%%m月',create_time)"}
+		).values_list('create_time').annotate(Count('create_time'))
 
+	print(archives.query)
 	#往模板中传递的上下文
 	context = {
 		'lasted_posts':lasted_posts,
 		'hot_posts':hot_posts,
+		'archives':archives,
 	}
 	return render(request,'home.html',context)
 
