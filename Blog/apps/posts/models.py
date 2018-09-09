@@ -4,7 +4,12 @@ import django.utils.timezone as timezone
 from ..categories.models import Category,Tag
 
 # Create your models here.
-
+# class PostManager(models.Mangager):
+# 	"""博客模型管理器，除去id为1博文，该博文作为留言板内容"""
+# 	def get_query_set(self):
+# 		superclass = super(PostManager,self)
+# 		return superclass.get_query_set().filter(id > 1)
+		
 #定义博客模型
 class Post(models.Model):
 	#博客标题

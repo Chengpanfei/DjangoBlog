@@ -1,6 +1,9 @@
 {% load static %}
 <!-- 这是导航栏 -->
+
+
 <link rel="stylesheet" type="text/css" href="/static/css/bootsnav.css">
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 
 <!-- 返回顶部的锚 -->
 <a name="top"></a>
@@ -8,13 +11,21 @@
 <nav class="navbar navbar-default navbar-mobile bootsnav">
 
 	<div class="navbar-header" style="width:20%">
+
+		  
+		  <!-- <div  style="padding-left: 10px;padding-top: 6px;">   -->
+		  	<!-- 默认折叠，中屏展开 -->
+		<div class="navbar-brand navbar-collapse navbar-expand-md">
+		<a   href="/" ><img style="width:180px;" src='/static/images/icon.png'></a>
+		</div>
+
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 			<i class="fa fa-bars"></i>
 		</button>
-		  
-		  <div  style="padding-left: 10px;padding-top: 6px;">  
-		<a  href="/"><img style="width:100%" src='/static/images/icon.png'></a>
-		</div>
+
+		<!-- <a  class="navbar-brand  navbar-expand-sm navbar-collapse" href="/" ><img style="width:180px;" src='/static/images/icon.png'></a> -->
+
+		<!-- </div> -->
 	</div><!-- nav-header -->
 
 	<div class="collapse navbar-collapse" id="navbar-menu">
@@ -48,3 +59,5 @@
 		</ul>
 	</div><!-- navbar-collapse -->
 </nav>
+
+<script type="text/javascript" src="/static/js/bootsnav.js"></script>
