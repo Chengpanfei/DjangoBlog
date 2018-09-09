@@ -51,7 +51,7 @@ def post_content(request,post_id):
 再判断是否有相关权限，若没有将返回403 Forbidden
 '''
 @login_required(login_url='/users/login/')
-@permission_required('Blog.add_post',raise_exception=True)
+@permission_required('posts.add_post',raise_exception=True)
 def post_create(request):
 	'''
 	创建博客视图
