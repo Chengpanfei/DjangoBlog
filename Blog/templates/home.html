@@ -1,5 +1,9 @@
 {% extends 'base/base.html' %}
 
+{% block title %}
+盼飞博客-记录学习笔记和技术交流的个人博客
+{% endblock %}
+
 {% block content %}
 <div class="row">
 
@@ -87,7 +91,7 @@
 
     	<div class="post-list">
 			<div class="list-title">
-				文档归档
+				文章归档
 			</div>
     		{% for item in archives %}
     		<a href="/posts/archives/{{item.0|slice:'0:4'}}/{{item.0|slice:'-3:-1'}}

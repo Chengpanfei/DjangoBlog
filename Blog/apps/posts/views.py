@@ -1,4 +1,8 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import (
+	render,
+	redirect,
+	get_object_or_404
+	)
 from django.http import Http404, HttpResponse
 from .models import Post
 from ..categories.models import Category
@@ -9,13 +13,15 @@ from .forms import PostForm
 
 
 from django.contrib.auth.decorators import (
-		login_required,
-		permission_required
-		)
+	login_required,
+	permission_required
+	)
 
 from django.views.decorators.http import require_POST
 
 from ...libs.uploads import save_img_to_cos
+
+from ...libs.paginator import paginate
 # Create your views here.
 
 def post_content(request,post_id):
@@ -96,13 +102,24 @@ def archives(request, year, month):
 	'''
 	博客归档视图
 	'''
-	print(year)
+	
 
 	posts = Post.objects.filter(
 		create_time__year=year,
 		create_time__month=month,
 		).order_by('-create_time')
 
+
+
+
+	page = request.GET.get('page')
+
+	posts = paginate(
+		objects = posts,
+		current_page = page,
+		num_per_page= 5
+		)
+	
 	context = {
 		'posts':posts
 	}

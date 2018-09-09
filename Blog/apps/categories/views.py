@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Category
 from ..posts.models import Post
+from ...libs.paginator import paginate
 
 # Create your views here.
 def category_posts(request,category=''):
@@ -15,6 +16,13 @@ def category_posts(request,category=''):
 		category_obj = get_object_or_404(Category,name=category)
 		posts = category_obj.posts.all()
 
+	#对posts分页处理
+	page = request.GET.get('page')
+	posts = paginate(
+		objects = posts,
+		current_page = page,
+		num_per_page= 5
+		)
 	#用于显示全部分类列表
 	categories = Category.objects.all()
 

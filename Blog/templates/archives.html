@@ -1,11 +1,20 @@
 {% extends 'base/base.html' %}
 
+{% block title %}
+文章归档
+{% endblock %}
+
 {% block content %} 
+
+
 
     {% for post in posts %}
 
     	{% include 'base/post_item.html' %}
 
     {% endfor %}
+
+
+    {% include 'base/pagination.html' %}
 
 {% endblock %}
