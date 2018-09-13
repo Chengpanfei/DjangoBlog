@@ -21,13 +21,23 @@
       <option>{{ category.name }}</option>
       {% endfor %}
     </select>
+    <label for="body-type" class="control-label">编辑方式</label>
+    <div class="">
+    <select class="form-control" id="body-type" name='body-type'>
+        <option>HTML</option>
+        <option>markdown</option>
+    </select>
+
     </div>
   </div>
+  <br>
 <div class="form-group">
-    <div id="editor" style="background-color: white;">
-        
+    <div id="editor" style="background-color: white;width: 100%;">
     </div>
-    </div>
+    <!-- <label for="name">文本框</label> -->
+    <textarea style="display: none;" class="form-control" id="markdown-body" rows="10"></textarea>
+
+</div>
 <input type="hidden" name="body" id="article-body">
 
 
@@ -63,12 +73,39 @@
     }
     editor.create()
 
+    document.getElementById('body-type').addEventListener('change', function (){
+        var markdown_body = document.getElementById('markdown-body')
+        var html_body = document.getElementById('editor')
+        if(this.value == 'markdown' ){
+            markdown_body.style.display='inline'
+            html_body.style.display='none'
+        }
+        else{
+            markdown_body.style.display='none'
+            html_body.style.display='inline-block'
+            // html_body.style.backgroundColor ='white'
+        }
+        
 
- document.getElementById('submit').addEventListener('click', function () {
+    })
+
+    document.getElementById('submit').addEventListener('click', function () {
     // 读取 text
     //alert(editor.txt.text())
-    document.getElementById('article-body').value = editor.txt.html()
+    var bodyType = document.getElementById('body-type').value
+    if(bodyType != 'markdown'){
+        document.getElementById('article-body').value = editor.txt.html()
+        
+    }
+    else{
+        
+        document.getElementById('article-body').value = 
+            document.getElementById('markdown-body').value
+    }
+    // alert(document.getElementById('article-body').value)
     document.getElementById('article-form').submit()
+    
+    //
 }, false)
 </script>
 

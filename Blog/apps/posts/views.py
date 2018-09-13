@@ -22,6 +22,8 @@ from django.views.decorators.http import require_POST
 from ...libs.uploads import save_img_to_cos
 
 from ...libs.paginator import paginate
+
+import markdown
 # Create your views here.
 
 def post_content(request,post_id):
@@ -65,9 +67,17 @@ def post_create(request):
 			title = request.POST['title'] 
 			body = request.POST['body']
 			category = request.POST['category']
+			body_type = request.POST['body-type']
 
 			category = get_object_or_404(Category,name=category)
 			
+			# 如果提交的是markdown，需要转换成html
+			if body_type == 'markdown':
+				body = markdown.markdown(body,
+					extensions = {
+						'markdown.extensions.toc',
+					})
+				print(body)
 
 			post = Post(title=title,category=category,content=body,author=request.user)
 
