@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Count
 from ..posts.models import Post
+from ..categories.models import Tag
 # Create your views here.
 
 
@@ -20,13 +21,15 @@ def home(request):
 	archives = Post.objects.extra(
 		select={"create_time":"strftime('%%Y年%%m月',create_time)"}
 		).values_list('create_time').annotate(Count('create_time'))
-
+	# 标签聚合
+	tags = Tag.objects.all()
 
 	#往模板中传递的上下文
 	context = {
 		'lasted_posts':lasted_posts,
 		'hot_posts':hot_posts,
 		'archives':archives,
+		'tags' : tags,
 	}
 	return render(request,'home.html',context)
 

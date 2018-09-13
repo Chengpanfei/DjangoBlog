@@ -68,6 +68,8 @@
 		{% endfor %}
 	</div>
 
+
+
 	</div>
 	</div><!-- 左边距 -->
 
@@ -105,6 +107,19 @@
     			<span style="float: right;">{{ item.1}}篇
     			</span>
     			</p>
+    		</a>
+    		{% endfor %}
+    	</div>
+
+    	<div class="post-list">
+			<div class="list-title">
+				标签云
+			</div>
+    		{% for tag in tags %}
+    		<a href="/posts/tags/{{ tag.name }}">
+    			<span> 
+    			{{ tag.name }} 
+    			</span>
     		</a>
     		{% endfor %}
     	</div>

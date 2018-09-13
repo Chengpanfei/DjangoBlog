@@ -4,3 +4,4 @@ class PostForm(forms.Form):
 	title = forms.CharField()
 	body = forms.CharField()
 	category = forms.CharField()
+	

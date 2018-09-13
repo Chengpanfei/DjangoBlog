@@ -4,6 +4,7 @@ from .views import (
 	post_create,
 	uploadImage,
 	archives,
+	tags,
 	)
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path('create/',post_create),
     path('uploadImage/',uploadImage),
     path('archives/<year>/<month>/',archives),
+    path('tags/<tag>/',tags),
 ]

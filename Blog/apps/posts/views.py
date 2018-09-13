@@ -5,7 +5,7 @@ from django.shortcuts import (
 	)
 from django.http import Http404, HttpResponse
 from .models import Post
-from ..categories.models import Category
+from ..categories.models import Category, Tag
 
 import json
 
@@ -125,4 +125,23 @@ def archives(request, year, month):
 	}
 	return render(request, 'archives.html',context)
 
+def tags(request, tag):
+	'''
+	标签列表视图
+	'''
+	tag_obj = get_object_or_404(Tag, name=tag)
+	posts = tag_obj.posts.all()
 
+	page = request.GET.get('page')
+
+	posts = paginate(
+		objects = posts,
+		current_page = page,
+		num_per_page= 5
+		)
+	
+	context = {
+		'posts':posts,
+		'tag' : tag_obj
+	}
+	return render(request, 'tags.html',context)
