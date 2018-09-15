@@ -77,7 +77,7 @@ def post_create(request):
 					extensions = {
 						'markdown.extensions.toc',
 					})
-				print(body)
+				
 
 			post = Post(title=title,category=category,content=body,author=request.user)
 
@@ -107,6 +107,46 @@ def uploadImage(request):
 	return HttpResponse(json.dumps(result),
 		content_type="application/json")
 
+def post_update(request, post_id):
+	'''
+	修改博客视图
+	'''
+	# 通过作者和对应id查找博客内容
+	post = get_object_or_404(Post,
+		 pk = post_id,
+		 author = request.user
+		 )
+
+	if request.method == 'POST':
+		form  = PostForm(request.POST)
+		if form.is_valid:
+
+			category = request.POST['category']
+			body_type = request.POST['body-type']
+			category = get_object_or_404(Category,name=category)
+			
+			# 如果提交的是markdown，需要转换成html
+			if body_type == 'markdown':
+				body = markdown.markdown(body,
+					extensions = {
+						'markdown.extensions.toc',
+					})
+				
+
+			# 更新标题，类别和内容
+			post.title = request.POST['title']
+			post.category = category
+			post.content = request.POST['body']
+
+			post.save()
+			return redirect('/posts/' + str(post.id))
+
+	context = {
+		'post' : post,
+		'categories':Category.objects.all(),
+	}
+
+	return render(request, 'posts_update.html', context)
 
 def archives(request, year, month):
 	'''
@@ -155,3 +195,5 @@ def tags(request, tag):
 		'tag' : tag_obj
 	}
 	return render(request, 'tags.html',context)
+
+

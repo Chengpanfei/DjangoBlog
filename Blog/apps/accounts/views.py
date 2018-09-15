@@ -94,7 +94,10 @@ def user_login(request):
 				msg = '恭喜你，'+user.username +' 登录成功，你的Email：' + user.email
 				messages.add_message(request,messages.INFO,msg)
 				login(request,user)
-				return redirect('/')
+
+				#获取next参数，若不存在则重定向至首页
+				next_page = request.GET.get('next','/')
+				return redirect(next_page)
 			
 			else:
 				#验证密码错误
