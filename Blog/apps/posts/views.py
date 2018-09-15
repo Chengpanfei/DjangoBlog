@@ -24,6 +24,8 @@ from ...libs.uploads import save_img_to_cos
 from ...libs.paginator import paginate
 
 import markdown
+
+from django.views.generic import ListView
 # Create your views here.
 
 def post_content(request,post_id):
@@ -196,4 +198,15 @@ def tags(request, tag):
 	}
 	return render(request, 'tags.html',context)
 
+
+class UserPostsView(ListView):
+	'''
+	显示指定用户的所有博客
+	'''
+	paginate_by = 5
+	context_object_name = 'posts'
+	template_name = 'user_posts_list.html'
+	#上上文中会有一个page_obj对象，模板中可以得到总共几页等信息
+	def get_queryset(self):
+		return Post.objects.filter(author=self.request.user)
 

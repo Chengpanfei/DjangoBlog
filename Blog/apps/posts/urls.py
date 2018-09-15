@@ -6,6 +6,7 @@ from .views import (
 	uploadImage,
 	archives,
 	tags,
+	UserPostsView,
 	)
 
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path('uploadImage/',uploadImage),
     path('archives/<year>/<month>/',archives),
     path('tags/<tag>/',tags),
+    path('user/<int:user_id>/',UserPostsView.as_view()),
 ]
